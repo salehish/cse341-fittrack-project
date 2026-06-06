@@ -16,7 +16,6 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(errorHandler);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // connect DB
@@ -36,6 +35,9 @@ app.use("/workouts", workoutRoutes);
 app.get("/", (req, res) => {
   res.send("FitTrack API is running ");
 });
+
+// error handler (must be registered AFTER routes so it can catch their errors)
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
