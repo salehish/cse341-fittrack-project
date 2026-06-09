@@ -26,6 +26,21 @@ const getUserById = async (req, res) => {
 };
 
 // Create user
+/**
+ * #swagger.tags = ['Users']
+ * #swagger.description = 'Create a new user'
+ * #swagger.parameters['body'] = {
+ *   in: 'body',
+ *   description: 'User information',
+ *   required: true,
+ *   schema: {
+ *     name: 'Saleh',
+ *     email: 'saleh@example.com',
+ *     age: 25
+ *   }
+ * }
+ */
+
 const createUser = async (req, res) => {
   try {
     const user = await User.create(req.body);
@@ -36,6 +51,20 @@ const createUser = async (req, res) => {
 };
 
 // Update user
+/**
+ * #swagger.tags = ['Users']
+ * #swagger.description = 'Update a user'
+ * #swagger.parameters['body'] = {
+ *   in: 'body',
+ *   required: true,
+ *   schema: {
+ *     name: 'Updated Saleh',
+ *     email: 'updated@example.com',
+ *     age: 26
+ *   }
+ * }
+ */
+
 const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(
@@ -54,7 +83,7 @@ const updateUser = async (req, res) => {
   }
 };
 
-// Delete user
+// Delete use
 const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
