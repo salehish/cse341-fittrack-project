@@ -18,16 +18,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// connect DB
-if (
-  process.env.MONGO_URI &&
-  process.env.MONGO_URI.startsWith("mongodb")
-) {
-  connectDB();
-} else {
-  console.log("MongoDB not configured yet.");
-}
-
 // routes
 app.use("/users", userRoutes);
 app.use("/workouts", workoutRoutes);
@@ -41,6 +31,23 @@ app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const startServer = async () => {
+  try {
+    if (
+      process.env.MONGO_URI &&
+      process.env.MONGO_URI.startsWith("mongodb")
+    ) {
+      await connectDB();
+    } else {
+      console.log("MongoDB not configured yet.");
+    }
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error("Failed to start server:", error.message);
+  }
+};
+
+startServer();
