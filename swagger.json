@@ -48,7 +48,39 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Create a new user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Saleh"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "saleh@example.com"
+                },
+                "age": {
+                  "type": "number",
+                  "example": 25
+                }
+              },
+              "required": [
+                "name",
+                "email",
+                "age"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -83,13 +115,43 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Users"
+        ],
+        "description": "Update a user",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Updated Saleh"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "updated@example.com"
+                },
+                "age": {
+                  "type": "number",
+                  "example": 26
+                }
+              },
+              "required": [
+                "name",
+                "email",
+                "age"
+              ]
+            }
           }
         ],
         "responses": {
