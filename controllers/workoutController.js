@@ -26,20 +26,6 @@ const getWorkoutById = async (req, res) => {
 };
 
 // Create workout
-/**
- * #swagger.tags = ['Workouts']
- * #swagger.description = 'Create a workout'
- * #swagger.parameters['body'] = {
- *   in: 'body',
- *   required: true,
- *   schema: {
- *     userId: 'USER_ID_HERE',
- *     type: 'Running',
- *     duration: 30,
- *     caloriesBurned: 250
- *   }
- * }
- */
 
 const createWorkout = async (req, res) => {
   try {
@@ -51,20 +37,7 @@ const createWorkout = async (req, res) => {
 };
 
 // Update workout
-/**
- * #swagger.tags = ['Workouts']
- * #swagger.description = 'Update a workout'
- * #swagger.parameters['body'] = {
- *   in: 'body',
- *   required: true,
- *   schema: {
- *     type: 'Cycling',
- *     duration: 45,
- *     caloriesBurned: 400
- *   }
- * }
- */
-  
+
 const updateWorkout = async (req, res) => {
   try {
     const workout = await Workout.findByIdAndUpdate(

@@ -13,24 +13,10 @@
   "paths": {
     "/": {
       "get": {
-        "description": "",
+        "description": "API health check",
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "description": "",
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
           }
         }
       }
@@ -202,7 +188,44 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Workouts"
+        ],
+        "description": "Create a new workout",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": {
+                  "type": "string",
+                  "example": "6a2874f8bb7af044f2853b52"
+                },
+                "type": {
+                  "type": "string",
+                  "example": "Running"
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 30
+                },
+                "caloriesBurned": {
+                  "type": "number",
+                  "example": 250
+                }
+              },
+              "required": [
+                "userId",
+                "type",
+                "duration",
+                "caloriesBurned"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -237,81 +260,43 @@
         }
       },
       "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
+        "tags": [
+          "Workouts"
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
-          }
-        }
-      },
-      "delete": {
-        "description": "",
+        "description": "Update a workout",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/{id}": {
-      "get": {
-        "description": "",
-        "parameters": [
           {
-            "name": "id",
-            "in": "path",
+            "name": "body",
+            "in": "body",
             "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "put": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "example": "Cycling"
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 45
+                },
+                "caloriesBurned": {
+                  "type": "number",
+                  "example": 400
+                }
+              },
+              "required": [
+                "type",
+                "duration",
+                "caloriesBurned"
+              ]
+            }
           }
         ],
         "responses": {

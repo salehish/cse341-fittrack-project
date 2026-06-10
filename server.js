@@ -22,9 +22,13 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use("/users", userRoutes);
 app.use("/workouts", workoutRoutes);
 
-app.get("/", (req, res) => {
-  res.send("FitTrack API is running ");
-});
+app.get(
+  "/",
+  /* #swagger.description = 'API health check' */
+  (req, res) => {
+    res.send("FitTrack API is running ");
+  }
+);
 
 // error handler (must be registered AFTER routes so it can catch their errors)
 app.use(errorHandler);
