@@ -9,9 +9,21 @@ const {
   deleteWorkout,
 } = require("../controllers/workoutController");
 
-router.get("/", getAllWorkouts);
-router.get("/:id", getWorkoutById);
+// Get all workouts
+router.get(
+  "/",
+  /* #swagger.tags = ['Workouts'] */
+  getAllWorkouts
+);
 
+// Get a workout by ID
+router.get(
+  "/:id",
+  /* #swagger.tags = ['Workouts'] */
+  getWorkoutById
+);
+
+// Create a new workout
 router.post(
   "/",
   /* #swagger.tags = ['Workouts']
@@ -30,6 +42,7 @@ router.post(
   createWorkout
 );
 
+// Update a workout
 router.put(
   "/:id",
   /* #swagger.tags = ['Workouts']
@@ -47,6 +60,11 @@ router.put(
   updateWorkout
 );
 
-router.delete("/:id", deleteWorkout);
+// Delete a workout
+router.delete(
+  "/:id",
+  /* #swagger.tags = ['Workouts'] */
+  deleteWorkout
+);
 
 module.exports = router;

@@ -9,10 +9,21 @@ const {
   deleteUser,
 } = require("../controllers/userController");
 
-router.get("/", getAllUsers);
+// Get all users
+router.get(
+  "/",
+  /* #swagger.tags = ['Users'] */
+  getAllUsers
+);
 
-router.get("/:id", getUserById);
+// Get a user by ID
+router.get(
+  "/:id",
+  /* #swagger.tags = ['Users'] */
+  getUserById
+);
 
+// Create a new user
 router.post(
   "/",
   /* #swagger.tags = ['Users']
@@ -30,6 +41,7 @@ router.post(
   createUser
 );
 
+// Update a user
 router.put(
   "/:id",
   /* #swagger.tags = ['Users']
@@ -47,6 +59,11 @@ router.put(
   updateUser
 );
 
-router.delete("/:id", deleteUser);
+// Delete a user
+router.delete(
+  "/:id",
+  /* #swagger.tags = ['Users'] */
+  deleteUser
+);
 
 module.exports = router;

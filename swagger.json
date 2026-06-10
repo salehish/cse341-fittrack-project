@@ -23,6 +23,9 @@
     },
     "/users/": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -79,6 +82,9 @@
     },
     "/users/{id}": {
       "get": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -153,6 +159,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Users"
+        ],
         "description": "",
         "parameters": [
           {
@@ -177,6 +186,9 @@
     },
     "/workouts/": {
       "get": {
+        "tags": [
+          "Workouts"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -238,6 +250,9 @@
     },
     "/workouts/{id}": {
       "get": {
+        "tags": [
+          "Workouts"
+        ],
         "description": "",
         "parameters": [
           {
@@ -312,6 +327,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Workouts"
+        ],
         "description": "",
         "parameters": [
           {
