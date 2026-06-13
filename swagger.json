@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "FitTrack API",
-    "description": "API for tracking users and workouts",
+    "description": "API for tracking users, workouts, exercises, and nutrition",
     "version": "1.0.0"
   },
   "host": "cse341-fittrack-project.onrender.com",
@@ -26,7 +26,6 @@
         "tags": [
           "Users"
         ],
-        "description": "",
         "responses": {
           "200": {
             "description": "OK"
@@ -40,7 +39,6 @@
         "tags": [
           "Users"
         ],
-        "description": "Create a new user",
         "parameters": [
           {
             "name": "body",
@@ -50,23 +48,15 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string",
-                  "example": "Saleh"
+                  "type": "string"
                 },
                 "email": {
-                  "type": "string",
-                  "example": "saleh@example.com"
+                  "type": "string"
                 },
                 "age": {
-                  "type": "number",
-                  "example": 25
+                  "type": "number"
                 }
-              },
-              "required": [
-                "name",
-                "email",
-                "age"
-              ]
+              }
             }
           }
         ],
@@ -85,7 +75,6 @@
         "tags": [
           "Users"
         ],
-        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -100,9 +89,6 @@
           },
           "404": {
             "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -110,51 +96,17 @@
         "tags": [
           "Users"
         ],
-        "description": "Update a user",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "Updated Saleh"
-                },
-                "email": {
-                  "type": "string",
-                  "example": "updated@example.com"
-                },
-                "age": {
-                  "type": "number",
-                  "example": 26
-                }
-              },
-              "required": [
-                "name",
-                "email",
-                "age"
-              ]
-            }
           }
         ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
           }
         }
       },
@@ -162,7 +114,6 @@
         "tags": [
           "Users"
         ],
-        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -173,13 +124,7 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+            "description": "Deleted"
           }
         }
       }
@@ -189,13 +134,9 @@
         "tags": [
           "Workouts"
         ],
-        "description": "",
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -203,7 +144,6 @@
         "tags": [
           "Workouts"
         ],
-        "description": "Create a new workout",
         "parameters": [
           {
             "name": "body",
@@ -213,37 +153,24 @@
               "type": "object",
               "properties": {
                 "userId": {
-                  "type": "string",
-                  "example": "6a2874f8bb7af044f2853b52"
+                  "type": "string"
                 },
                 "type": {
-                  "type": "string",
-                  "example": "Running"
+                  "type": "string"
                 },
                 "duration": {
-                  "type": "number",
-                  "example": 30
+                  "type": "number"
                 },
                 "caloriesBurned": {
-                  "type": "number",
-                  "example": 250
+                  "type": "number"
                 }
-              },
-              "required": [
-                "userId",
-                "type",
-                "duration",
-                "caloriesBurned"
-              ]
+              }
             }
           }
         ],
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
           }
         }
       }
@@ -253,7 +180,6 @@
         "tags": [
           "Workouts"
         ],
-        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -265,12 +191,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -278,51 +198,17 @@
         "tags": [
           "Workouts"
         ],
-        "description": "Update a workout",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "example": "Cycling"
-                },
-                "duration": {
-                  "type": "number",
-                  "example": 45
-                },
-                "caloriesBurned": {
-                  "type": "number",
-                  "example": 400
-                }
-              },
-              "required": [
-                "type",
-                "duration",
-                "caloriesBurned"
-              ]
-            }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "404": {
-            "description": "Not Found"
+            "description": "Updated"
           }
         }
       },
@@ -330,7 +216,69 @@
         "tags": [
           "Workouts"
         ],
-        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted"
+          }
+        }
+      }
+    },
+    "/exercises/": {
+      "get": {
+        "tags": [
+          "Exercises"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Exercises"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "muscleGroup": {
+                  "type": "string"
+                },
+                "duration": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/exercises/{id}": {
+      "get": {
+        "tags": [
+          "Exercises"
+        ],
         "parameters": [
           {
             "name": "id",
@@ -342,12 +290,141 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Exercises"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Exercises"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted"
+          }
+        }
+      }
+    },
+    "/nutrition/": {
+      "get": {
+        "tags": [
+          "Nutrition"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Nutrition"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "foodName": {
+                  "type": "string"
+                },
+                "calories": {
+                  "type": "number"
+                },
+                "protein": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/nutrition/{id}": {
+      "get": {
+        "tags": [
+          "Nutrition"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Nutrition"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Nutrition"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted"
           }
         }
       }
