@@ -6,21 +6,39 @@ const connectDB = require("./database/connect");
 
 const userRoutes = require("./routes/userRoutes");
 const workoutRoutes = require("./routes/workoutRoutes");
+const exerciseRoutes = require("./routes/exerciseRoutes");
+const nutritionRoutes = require("./routes/nutritionRoutes");
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
 const errorHandler = require("./middleware/errorHandler");
 
+const session = require("express-session");
+const passport = require("./config/passport");
+const authRoutes = require("./routes/authRoutes");
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+app.use("/auth", authRoutes);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // routes
 app.use("/users", userRoutes);
 app.use("/workouts", workoutRoutes);
+app.use("/exercises", exerciseRoutes);
+app.use("/nutrition", nutritionRoutes);
 
 app.get(
   "/",
