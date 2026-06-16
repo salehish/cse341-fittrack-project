@@ -16,3 +16,13 @@ services:
         value: "20"
       - key: MONGO_URI
         sync: false
+      # GitHub OAuth — set these as secrets in the Render dashboard.
+      - key: GITHUB_CLIENT_ID
+        sync: false
+      - key: GITHUB_CLIENT_SECRET
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      # Full callback URL so it matches the GitHub OAuth App registration.
+      - key: GITHUB_CALLBACK_URL
+        value: https://cse341-fittrack-project.onrender.com/auth/github/callback
