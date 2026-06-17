@@ -72,4 +72,10 @@ const startServer = async () => {
   }
 };
 
-startServer();
+// Only start the server when run directly (e.g. `node server.js`),
+// not when imported by tests (which use the exported app via Supertest).
+if (require.main === module) {
+  startServer();
+}
+
+module.exports = app;

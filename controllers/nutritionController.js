@@ -37,7 +37,7 @@ const updateNutrition = async (req, res) => {
         const nutrition = await Nutrition.findByIdAndUpdate(
             req.params.id,
             req.body,
-            { new: true }
+            { new: true, runValidators: true }
         );
 
         if (!nutrition) {
