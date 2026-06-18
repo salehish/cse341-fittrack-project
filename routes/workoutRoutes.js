@@ -35,7 +35,11 @@ router.post(
          $userId: '6a2874f8bb7af044f2853b52',
          $type: 'Running',
          $duration: 30,
-         $caloriesBurned: 250
+         $caloriesBurned: 250,
+         $intensity: 'High',
+         distance: 5,
+         location: 'City Park',
+         notes: 'Morning run, felt great'
        }
      }
   */
@@ -53,7 +57,11 @@ router.put(
        schema: {
          $type: 'Cycling',
          $duration: 45,
-         $caloriesBurned: 400
+         $caloriesBurned: 400,
+         $intensity: 'Medium',
+         distance: 12,
+         location: 'River Trail',
+         notes: 'Evening ride'
        }
      }
   */

@@ -18,6 +18,19 @@ const workoutSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  intensity: {
+    type: String,
+    required: true,
+  },
+  distance: {
+    type: Number,
+  },
+  location: {
+    type: String,
+  },
+  notes: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now,
