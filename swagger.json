@@ -418,6 +418,9 @@
     },
     "/exercises/": {
       "get": {
+        "tags": [
+          "Exercises"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -429,7 +432,39 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Exercises"
+        ],
+        "description": "Create a new exercise",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Barbell Squat"
+                },
+                "muscleGroup": {
+                  "type": "string",
+                  "example": "Legs"
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 20
+                }
+              },
+              "required": [
+                "name",
+                "muscleGroup",
+                "duration"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -445,6 +480,9 @@
     },
     "/exercises/{id}": {
       "get": {
+        "tags": [
+          "Exercises"
+        ],
         "description": "",
         "parameters": [
           {
@@ -467,13 +505,43 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Exercises"
+        ],
+        "description": "Update an exercise",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Front Squat"
+                },
+                "muscleGroup": {
+                  "type": "string",
+                  "example": "Legs"
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 25
+                }
+              },
+              "required": [
+                "name",
+                "muscleGroup",
+                "duration"
+              ]
+            }
           }
         ],
         "responses": {
@@ -492,6 +560,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Exercises"
+        ],
         "description": "",
         "parameters": [
           {
@@ -516,6 +587,9 @@
     },
     "/nutrition/": {
       "get": {
+        "tags": [
+          "Nutrition"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -527,7 +601,39 @@
         }
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Nutrition"
+        ],
+        "description": "Create a new nutrition record",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "foodName": {
+                  "type": "string",
+                  "example": "Grilled Chicken Breast"
+                },
+                "calories": {
+                  "type": "number",
+                  "example": 165
+                },
+                "protein": {
+                  "type": "number",
+                  "example": 31
+                }
+              },
+              "required": [
+                "foodName",
+                "calories",
+                "protein"
+              ]
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -543,6 +649,9 @@
     },
     "/nutrition/{id}": {
       "get": {
+        "tags": [
+          "Nutrition"
+        ],
         "description": "",
         "parameters": [
           {
@@ -565,13 +674,43 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Nutrition"
+        ],
+        "description": "Update a nutrition record",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "foodName": {
+                  "type": "string",
+                  "example": "Salmon Fillet"
+                },
+                "calories": {
+                  "type": "number",
+                  "example": 208
+                },
+                "protein": {
+                  "type": "number",
+                  "example": 20
+                }
+              },
+              "required": [
+                "foodName",
+                "calories",
+                "protein"
+              ]
+            }
           }
         ],
         "responses": {
@@ -590,6 +729,9 @@
         }
       },
       "delete": {
+        "tags": [
+          "Nutrition"
+        ],
         "description": "",
         "parameters": [
           {
